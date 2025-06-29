@@ -74,3 +74,39 @@ oleh karena itu kadang sekilas terlihat seperti kurung kurawal doubel, padahal s
 
 Props/Properties
 react component menggunakan props untuk berkomunikasi 
+parent component bisa mengirim informasi ke child component dengan menggunakan props 
+props itu mirip attribute di HTML element tapi bisa mengirim nila javascript seperti object,array,function atau yang lainnya 
+
+Menambahka Props 
+untuk menambahkan properties pada component kita hanya perlu menambahkan paramater object pada function di component
+parameter props tersebut merupkan javascript object sehingga kita bisa mengakses detail attribute yang dikirim dari parent melalui props
+
+Deastructuring Props
+salah satu yang bisa di lakukan oleh programer react adalah, melakukan destructuring parameter pada props
+hal ini untuk mempermudah ketika membaca,sehingga kita tahu attribute apa yang tersdia pada component tersebut 
+karena props adalah javascript object jadi kita juga bisa menambahkan fitur seperti default value pada props.
+
+Mengirim Props
+untuk mengirim props kita bisa menggunakan attribute seperti HTML element ketika menggunakan component
+
+Spread Syntax 
+terkadang mengirim props dari parent component ke child component sangat merepotkan 
+jika kita hanya ingin melakukan forward semua props ke child component kita bisa menggunakan spread syntax
+
+Nasted Component
+jsx mendukung pembuatan nasted component 
+hal ini memungkinkan kita bisa membuat component yang didalamnya bisa ditambahkan component lain secara dinamis 
+agar component bisa memiliki component lain didalamnya kita bisa menggunakan attribute children pada props
+misalkan sekarang kita akan membuat component bernama container dan didalmnya kita bisa berisi copmonent lainnya
+
+Style 
+Css sendiri bukan bagian dari JSX,jika kita ingin membuat style CSS maka kita perlu buat dalam file Css atau langsung di attribute style menggunakan kurung kurawal double 
+namun sekarang kita akan mencoba dalam file Css
+menggunakan style pada jsx tidak menggunakan attribute class melainkan className
+
+Conditional
+saat kita membuat halaman web sering sekali kita menampilkan tampilan berbeda pada kondisi tertentu
+hal ini juga bisa dilakukan di jsx 
+kita bisa menambahkan kondisi menggunakan javascript dan mengembalikan component yang berbeda bedasarkan kondisi yang diinginkan 
+contohnya kita akan membuat halaman todolist dan jika todo nya sudah selesai 
+kita akan mencoret element teksnya 

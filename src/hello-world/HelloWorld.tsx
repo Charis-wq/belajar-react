@@ -1,30 +1,28 @@
 import type { JSX } from "react"
+import "./HelloWorld.css";
 
 export default function HelloWorld(): JSX.Element {
+    const props: object  = {
+         text: "Hello world from props"
+    }
     return (
         <div>
-            <Header></Header>
+            <Header {...props}></Header>
             <Paraghraph></Paraghraph>
             
         </div>
     )
 }
 
-function Header(): JSX.Element {
-    const text: string = "Hello World";
+function Header({text = "Ups Im Sorry "}): JSX.Element {;
     return (
-        <h1 style={{color: "blue", backgroundColor: "maroon"}}>{text}</h1>
+        <h1 className="tittle" >{text}</h1>
     );
 }
 
 function Paraghraph(): JSX.Element {
     const text: string = "Selamat Belajar React";
-    const style: React.CSSProperties = {
-
-        color: "red",
-        backgroundColor: "yellow"
-    }
     return (
-        <p style={style}>{text}</p>
+        <p className="content">{text}</p>
     );
 }
