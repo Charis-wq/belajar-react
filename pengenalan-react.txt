@@ -1,0 +1,76 @@
+Kenapa Butuh Framework 
+agar ada standarisasi saat membuat project terutama saat kita bekerja dengan tim
+tanpa adanya framework maka setiap orang akan membuata kode dengan gaya masing-masing
+
+Component
+saat belajar rect kita harus terbiasa dengan istilah Component
+component adalah kumpulan kode yang bisa digunakan secara independen 
+component bisa berisikan satau atau lebih HTML element, kode javascript dan CSS
+tidak ada aturan harus seberapa kecil atau besar sebuah component
+anggapa saja seperti membuat function kita bisa membuat function yang besar atau kecil karena tujuan function adalah agar bisa di gunakan berulang begitu pula component 
+struktur component mirip seperti DOM(Document Object Model) dimana kita bisa membuat component di dalam component lain
+
+JSX
+rect menggunakan jsx ketika membuat component 
+jsx(javascript XML atau javascript syntax extension), adalah kombinasi kode javascript dan xml (HTML), dimana kita bisa membuat componenet dengan mudah menggunakan kode xml dan javascript dalam satu file 
+jsx diperkenalkan oleh facebook di react mnamun saat ini jsx sudah banyak di adopsi oleh banyak framewrok javascript lainnya
+
+Membuat Component
+biasanya,component akan dibuat dalam satu file jsx dengan nama sesuai dengan nama komponennya
+misalkan kita akan membuat  component bernama HelloWorld 
+maka kita bisa membuat file HelloWorld.jsx
+selanjutnya kita perlu membuat default function dengan nama componentnya yaitu HelloWorld
+return daru function tersebut adalah element UI yang akan ditampilkan 
+
+Menapilkan Component
+untuk menampilkan component diperlukan instance ari react root
+kita bisa membuat react root menggunakan method creatroot(element)
+selanjutnya untuk menapilkan component di react root kita bisa mengunakan method render(component)
+untuk membantu mencari masalah saat development react menyadiakan component stricmode kita bisa menggunakan stricmode untuk menapilkan component di root 
+
+Component
+react component mendukung semua elemen HTML dan SVG
+jadi kita tidak perlu khawatir membuat component karena semua element pasti didukung 
+
+Multiple Component
+sebelumnya kita membuat satu file JSX untuk satu component 
+walaupun itu adalah praktek yang baik tapi itu bukan berarti wajib dilakukan 
+component sebenarnya adalah sebuah function yang mengembalikan react element oleh karena itu jika kita ingin membuat component kita hanya cukup membuat function yang mengembalikan react element
+
+Kenapa JSX/TSX
+web dibuat menggunakan HTML,CSS dan Javascript biasanya kita akan menyimpan konten di HTML desain di CSS dan logika aplikasi di javascript dan biasanya kita akan simpan file-file yang terpisah 
+tapi saat ini web sudah interaktif seringnya konten HTML di tampilkan berdasarkan logika aplikasi di javascript
+oleh karean itu react melakukan logika aplikasi dan membuat konten disatu tempat yang sama yaitu JSX
+
+Mengubah HTML Ke JSX/TSX
+saat mengubah kode HTML ke JSX/TSX kita tidak bisa mengubah semudah copy paste kodenya 
+JSX/TSX memiliki aturan yang lebih ketat di bandingkan HTML contohnya saat menggunakan tag element wajib menggunakan tag tutup
+misalkan kita tidak bisa menggunakan <img src="">
+maka kita harus menggunakan tag tutup ketika menggunakan JSX/TSX
+<img src=""/>
+beberapa attribute di tag element pun berbeda. 
+
+Aturan JSX/TSX
+component hanya boleh mengambalikan satu element jika kita ingin mengembalikan beberapa element kita harus membungkus dalam parent element 
+wajib menutup semua tag element 
+attribute menggunakan camelCase attribute di element JSX akan di konversi ke variabel javascript oleh karena itu nama attribute harus mengikuti cara pembuatan nama variabel di javascript yaitu tidak bisa menggunak -(strip) karena keterbatasan ini kebanyakan atributte di element jsx akan menggunakan camelCase contohnya className(bukan class-name). 
+
+JSX Converter 
+jika misal kita sudah punya kode HTML dan ingin mengkonversi ke jsx 
+disarankan menggunakan converter sehingga kita tidak perlu lakukan secara manual lagi.
+
+Javascript di JSX
+terkadang ada kasus dimana kita ingin mengakses kode javascript di jsx
+pada kasus ini kita bisa menggunakan kurung kurawal untuk mengakses kode javascript di jsx
+
+Kurung Kurawal di JSX 
+penggunaan kurung kurawal di jsx hanya bisa di lakukan pada dua lokasi 
+sebagai teks seperti pada contoh  
+sebagai nilai attribut pada tag element misal<img src= [location]/>
+
+Kurung kurawal Doubel pada JSX 
+pada beberapa attribute contohnya style kita bisa menggunakan javascript object sebagai parameter 
+oleh karena itu kadang sekilas terlihat seperti kurung kurawal doubel, padahal sebenarnya hanya satu kurung kurawal dan datanya adalah javascript object 
+
+Props/Properties
+react component menggunakan props untuk berkomunikasi 
