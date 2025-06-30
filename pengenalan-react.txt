@@ -109,4 +109,26 @@ saat kita membuat halaman web sering sekali kita menampilkan tampilan berbeda pa
 hal ini juga bisa dilakukan di jsx 
 kita bisa menambahkan kondisi menggunakan javascript dan mengembalikan component yang berbeda bedasarkan kondisi yang diinginkan 
 contohnya kita akan membuat halaman todolist dan jika todo nya sudah selesai 
-kita akan mencoret element teksnya 
+kita akan mencoret element teksnya
+
+Null component
+pada kasus tertentu mungkin ada kondisi dimana kita ingin mengembalikan component atau tidak ingin mengembalikan component apapun
+kita bisa mengembalikan null untuk menandai bahwa tidak ada component yang kita kembalikan
+
+Tenary Operator 
+terkadang pada kasus yang lebih sederhana kita bisa menggunakan tenary operator  javascript di jsx
+
+Logical AND 
+di beberapa kasus yang lebih sederhana terkadang di jsx sering memanfatkan logical AND di javascript
+misalkan jika kondisi terpenuhi maka akan menampilkan jika tidak maka tidak akan menampilkan
+
+Collection Component
+kita pasti akan sering menampilkan component yang sama berkali-kali sesuai koleksi data jsx sendiri tidak memilkik fitur perulangan 
+untuk menampilkan multiple component sama seperti conditional kita akan memanfatkan javascript 
+kita bisa menggunakan javascript array untuk mengubah data array menjadi component misal menggunakan method map() pada array 
+misalkan sekarang kita akan mencoba ubah data todolist menjadi array
+
+Component Key
+jika kita perhatikan di text editor mungkin kita akan melihat pesan peringatan: "Mising key prop for element in iterator"
+saat membuat colection component tiap component diperlukan id(unique string atau number) menggunakan atribute key
+kenapa butuh component key? hal ini agar react bisa mengenali component ketika berubah sperti posisinya diubah dihapus atau ditambahkan pada colection biasanya component key akan di ambil dari data sehingga  lebih konsisten

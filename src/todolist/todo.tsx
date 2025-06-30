@@ -3,12 +3,15 @@ import type { FC, JSX } from "react";
 interface TodoProps {
     text: string;
     isComplete: boolean;
-
+    isDeleted: null | boolean;
 }
-const Todo: FC<TodoProps> = ({ text, isComplete }): JSX.Element => {
+const Todo: FC<TodoProps> = ({ text, isComplete, isDeleted = false }): JSX.Element | null => {
+    if (isDeleted) {
+        return null;
+    }
     return (
         <li>
-            {isComplete ? <del>{text}</del> : text}
+            {text} {isComplete && "✔" }
         </li>
     );
 };
