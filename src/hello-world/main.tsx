@@ -3,12 +3,18 @@ import HelloWorld from "./HelloWorld.tsx";
 import { StrictMode } from "react";
 import Container from "./container.tsx";
 import TodoList from "../todolist/todolist.tsx";
+import Table from "../table/Table.tsx";
+import AlertButton from "../button/AlertButton.tsx";
+import MyButton from "../button/MyButton.tsx";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <Container>
                <HelloWorld/>  
                <TodoList/> 
+               <Table/>
+               <AlertButton text="Click me" message="Yes Click Me"/>
+               <MyButton text="Smash Me" onSmash="You smashed me!"/>
         </Container>
      
     </StrictMode>

@@ -132,3 +132,41 @@ Component Key
 jika kita perhatikan di text editor mungkin kita akan melihat pesan peringatan: "Mising key prop for element in iterator"
 saat membuat colection component tiap component diperlukan id(unique string atau number) menggunakan atribute key
 kenapa butuh component key? hal ini agar react bisa mengenali component ketika berubah sperti posisinya diubah dihapus atau ditambahkan pada colection biasanya component key akan di ambil dari data sehingga  lebih konsisten
+
+Pure Function
+dalam pemograman kita mengenal yang namanya Pure Function
+sebuah function kita sebut sebagai pure function jika memenuhi dua kriteria berikut:
+function akan mengembalikan nilai yang sama untuk nilai parameter yang sama 
+funtion tidak memiliki efek samping tidak ada perubahan pada variabel non local(variabel yang berada diluar function)
+
+Pure Component
+react mengasumsikan bahwa setiap component yang kita buat adalah pure function 
+ini berati bahwa react component yang kita buat harus selalu mengembalikan JSX yang sama dengan input yang sama
+walaupun sebenarnya kita bisa saja membuat react component yang tidak pure tapi sangat tidak disarankkan karana setiap memanggil component dengan input yang sama bisa menghasilkan nilai yang tidak konsisten 
+kita akn membuat contoh react component yang tidaka pure
+
+Membuat Pure Component 
+kita harus menghapus efek samping dari component contohnya kita bisa pindahkan variabel conter menjadi local variabel di Table dan gunakan props sebagai conternya
+
+Dimana bisa melakukan efek samping?
+react menyediakan tempat khusus jika ingin membuat component yang bisa menghasilkan efek samping 
+efek samping dari component biasanya ditempatkan di event handler,yaitu aksi yang terjadi ketika kita berinteraksi dengan component 
+atau ketika kita misalkan component tergantung dengan external system(misal API), maka react menyediakan function useEffect()
+
+Event Handler 
+seperti yang sudah kita tahu bahwa di HTML element kita bisa menambahkan event handler
+sama juga dengan rect component kita juga bisa menambahkan event handler pada element di react component
+ada banayak sekali jenis event handler yang bisa kita tambahkan kita bisa lihat di halaman referensi react  component
+
+Menambah Event Handler
+unutk menambahkan event handler bisanya kita akan tambahkan function sebagai handlernya 
+bisa dalam bentuk anonimous function arrow function atau membuat function terlebih dahulu didalam scope componentnya
+nama function untuk handler biasanya diawali dengan nama "handle" dan diikiuti dengan jenis event handler, misalkan handleClick(), handlemousEnter(), dan alain-lain
+
+Membaca Props di Event Handler
+salah satu keuntungan membuat function event handler didalam component adalah,kita bisa membaca props yang di gunakan oleh component tersebut
+
+Event Handler sebagai Props
+seperti yang di materi props sebenarnya adalah javascript object
+kita tahu bahwa javascript object bisa memiliki attribute dengan tipe function 
+oleh karena itu kita juga bisa membuat event handler biasanya nama attributenya akan diawali dengan "on" misal onSmash, onHit dan lain-lain

@@ -36,13 +36,12 @@ export default function TodoList(): JSX.Element {
             isDeleted: false
         },
     ];
-    const Todos = data.map((todo, id) => {
-        return <Todo key={id} {...todo} />
-    });
 
     return(
         <ul>
-           {Todos}
+           {data.map((todo) => (
+            <Todo key={todo.id} {...todo}/>
+           ))}
         </ul>
     );
 }
