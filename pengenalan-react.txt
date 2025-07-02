@@ -170,3 +170,22 @@ Event Handler sebagai Props
 seperti yang di materi props sebenarnya adalah javascript object
 kita tahu bahwa javascript object bisa memiliki attribute dengan tipe function 
 oleh karena itu kita juga bisa membuat event handler biasanya nama attributenya akan diawali dengan "on" misal onSmash, onHit dan lain-lain
+
+Event Object 
+saat kita membuat event handler function kita bisa menambahkan event object sebagai parameter di function tersebut
+react event object kompatible dengan standard DOM event object
+
+Event Propagation
+event di react component akan selalu di sebarkan ke component yang ada di atasnya(event propagation)
+misalkan kita memiliki div dengan event onClick lalu didalamnya kita memiliki button dengan event onClick
+ketika button di click maka onClick di button akan dipicu dan selanjutnya onClick di div juga akan dipicu
+kadang mungkin kita tidak ingin hal itu terjadi maka kita bisa hentikan proses event propagation tersebut menggunakan method stopPropagation()
+
+Prevent Default 
+selain menghentikan event propagation hal yang biasa kita lakukan keetika membuat event handler adalah menghentikan default action menggunakan preventDefault()
+misalkan kita membuat from keetika di picu event onClick kita ingin hentikan default action from submit
+
+Side Effect 
+apakah component boleh memiliki side effect (efek samping)
+tentu saja boleh namun biasanya side effect terjadi karena  aanya interaksi dari pengguna melalui event handler
+misal kita akan membuat form say hello dimana ketika button di klik kita ingin menampilkan hello + nama pada text

@@ -6,6 +6,9 @@ import TodoList from "../todolist/todolist.tsx";
 import Table from "../table/Table.tsx";
 import AlertButton from "../button/AlertButton.tsx";
 import MyButton from "../button/MyButton.tsx";
+import Toolbar from "../button/Toolbar.tsx";
+import SearchForm from "../from/SearchForm.tsx";
+import SayHelloFrom from "../from/SayHelloForm.tsx";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
@@ -14,7 +17,13 @@ createRoot(document.getElementById("root")!).render(
                <TodoList/> 
                <Table/>
                <AlertButton text="Click me" message="Yes Click Me"/>
-               <MyButton text="Smash Me" onSmash="You smashed me!"/>
+               <MyButton text="Smash Me" onSmash={() => alert("You smash me!")}/>
+               <Toolbar onClick={(e: React.MouseEvent) => {
+                   e.stopPropagation();
+                   alert("You clicked a button");
+               }} />
+               <SearchForm />
+               <SayHelloFrom/>
         </Container>
      
     </StrictMode>

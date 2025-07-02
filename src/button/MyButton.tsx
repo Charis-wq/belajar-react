@@ -1,17 +1,12 @@
 import type { JSX } from "react";
 type MyButton = {
     text: string;
-    onSmash?: string
+    onSmash: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function MyButton({ text, onSmash }: MyButton): JSX.Element {
-    function handleClick() {
-        alert(onSmash);
-
-    }
-
     return(
-    <button onClick={handleClick} >{text}</button>
+    <button onClick={onSmash} >{text}</button>
 )
     
 }

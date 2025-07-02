@@ -5,7 +5,8 @@ type AlertButton = {
 }
 
 export default function AlertButton({ text, message }: AlertButton): JSX.Element {
-    function handleClick() {
+    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+        console.log(e.target)
         alert(message);
 
     }
