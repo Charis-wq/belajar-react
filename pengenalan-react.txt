@@ -189,3 +189,92 @@ Side Effect
 apakah component boleh memiliki side effect (efek samping)
 tentu saja boleh namun biasanya side effect terjadi karena  aanya interaksi dari pengguna melalui event handler
 misal kita akan membuat form say hello dimana ketika button di klik kita ingin menampilkan hello + nama pada text
+
+DOM Manipulation
+kode sebelumnya kita menggunakan DOM manipulation untuk mengubah component di react 
+hal ini sebenarnya tidak terlalu direkomendasikan terutama jika misal data yang memicu perubahan element di component bersumber dari berbagai event handler
+oleh karena itu hal yang direkomendasikan adalah menggunakan state yang akan kita bahas
+
+Hooks
+jooks adalah fitur di rectyang bisa digunakan dicomponent 
+ada banyak sekali fitur yang isa kita gunakan di react hooks  
+
+State 
+component kadang perlu untuk berubah dikarenakan interaksi yang dilakukan pengguna 
+misal,input di klik bisa menaikan data counter, tombol next bisa gambar banner yang sedang muncul dan lain-lain 
+di react memori sppesific di component disebut state
+
+State Menggunakan Local variabel Biasa 
+apakah local variabel biasa di component bisa digunakan untuk state? sayangnya hal ini tidak bisa dilakukan 
+ketika rect melakukan render componnent untuk yang kedua kali dan seterusnya maka semua kode component akan dieksekusi ulang oleh karena itu lpcal variabel akan kembali ke nilai awal
+peribahan di local variabel juga tidak akan memicu render ulang component
+
+useState
+untuk membuat state kita bisa menggunakan function useState(initial)
+function useState akan mengembalikan array dengan 2 nilai pertama adalah statenya dan yang kedua ada function untuk mengubah value di state tersebut 
+cpomponet yang menggunakan state tersebut secara otomatis akan di render
+
+State Terisolasi dan Private
+state merupakan data yang terisolasi dan private secara local terhadap component yang menggunakan
+artinya jika me-render component yang samaberkali-kali maka state dari tiap component tersebut akan terpisah satu sama lain
+
+Render 
+sebelum component ysng kita buat dtampilkan dilayar component harus dirender oleh react oleh karena itu kita perlu tahu bagaimana cara kerja proses react ini ketika menampilkan component yang kita buat
+terdapat 3tahapan proses menampilkan component di react
+1: trigger(memicu) proses render
+2: melakukan proses render component
+3: menempatkan hasil render component ke DOM(document object model) 
+
+Trigger Render
+pemicu render bisanya terjadi karena dua hal
+pertama adalah inisialisasi awal component yang kita akukan menggunakan method render()
+kedua adalah ketika ada pemicu perubahan state
+seetiap terjadi perubahan state secara otomatis react akan mengirimkan antrian untuk memicu proses render ulang
+
+Render Component 
+setelah proses trigger render terjadi react akan memanggil component  yang kita buat untuk mencari tahu apa yang harus ditampilkan dilayar 
+render adalah proses react memanggil component yang kit6a buat 
+pada proses inisaialisasi awal react akan memanggil root component(paling atas)
+pada saat render ulang react hanya  akan memanggil ulang component yang state nya berubah 
+setelah proses render selesai react akan melakukan proses commit
+
+Commit Changes
+setelah proses rendere selesai react akan melakukan proses commit changes(menyimpan perubahan) ke DOM
+unutuk inisialisasi awal karena baru pertama kali artinya element di DOM belum ada,maka react akan menggunakan appendChild() untuk menambahkan elemen ke DOM
+sedangkan untuk proses render ulang react akan mencoba melakukan perubahan seminimal mungkin untuk menyamakan DOM saat ini dengan hasil rendering
+react hanya akan mengubah element di DOM jika memang elment tersebut berbeda hasil dari rendering
+
+Snapshot 
+variabel state sdekilas mungkin terlihat seprti variabel javascript biasa 
+tapi sebenarnya state itu mirip snapshot(kondis saat itu),mengubah nilai variabel state tidak akan mengubah snapshot melainkan akan memicu render ulangan untuk membuat snapshot baru 
+kita mungkin berfikitr bahwa tampilan web berubah secara langsung karena response dari event yang dilakukan oleh pengguna seperti klik tombol
+namun sebenarnya tidak seperti itu kita sudah tahu dimateri sebelumnya ketika terjadi perubahan state itu akan memicu render ulang sehingga akan membuat snapshot baru yang ditampilkan dilayar
+
+Keslahan Mengubah State
+paham tentang snapshot ini akan memberi gambaran cara pandang kita terhadasp data di state 
+berikut ini adalah contoh kesalahan yang bisa  dilakuakan ketika mengubah state 
+kita berfikir jika mengubah state saat itu juga data akan berubah padahal mengubah state sebenarnya hanyalah  mentrigger render ulang dengan nilai state yang baru 
+
+Kenapa Counter Tidak Berubah 3X?
+hal ini dikarenakan setCounter() tidak akan mengubah data counter yang ada di snapshot saat ini 
+setCounter() hanya akan melakukan render ulang dengan data counter yang baru
+saat kita memanggil setCounter() sebanyak 3X buakan berarti react kana melakukan render ulang sebanyak 3X react akan menunggu samapai event handler selesai jika ada perubahan state maa akan dilakukan render ulang 
+artinya render ulang akan dilakukan sekali saja walaupun kita mengubah state berkali-kali 
+
+State Update
+seperti sebelumnya dibahas, melakukan update state berkali-kali tidak akan mengubah data state di snapshot saat itu melainkan hanya memicu untuk render ulang dengan data state baru 
+tapi kadang-kadang kita memang mungkin ada keperluan untuk mengubah data di state yang sama berkali-kali
+dan jika kita memang ingin mengubah data state dengan data  yang harapannya sudah diubah sebelumnya (walaupun belum di render ulang) 
+kita bisa menggunakan lambda sebagai parameter ketika memanggil function untuk update data state
+
+Object di State
+state bisa menyimpan jenis data javascript apapun termasuk object
+tapi kita tidak disarankan untuk mengubah object di state kita disarankan, membuat object baru lalu mengubah data di state tersebut dengan object
+
+Immutable Data  
+saat kita membuat data di state kita harus memperlakukan data di state sebagai immutable data(tidak bisa berubah)
+artinya data di state hanya dgunakan untuk dibaca(read only)
+jika kita ingin mengubah data di state maka kita harus ubah mengguakan data baru yang artinya data lama tidak dimodifikasi
+ini adalah praktek yang biasa dilakukan di react walaupun pada kenyataannya object di javascript tidak immutable
+hal ini direkomendasikan agar kita  tidak salah mengubah data langsung padahal kita tahu bahwa mengubah data tidaka akan memicu proses render ulang 
+untungnya dijavascript kita bisa menggunakan spread syntax untuk membantu meng-copy attribute di object 
