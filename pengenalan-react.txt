@@ -278,3 +278,55 @@ jika kita ingin mengubah data di state maka kita harus ubah mengguakan data baru
 ini adalah praktek yang biasa dilakukan di react walaupun pada kenyataannya object di javascript tidak immutable
 hal ini direkomendasikan agar kita  tidak salah mengubah data langsung padahal kita tahu bahwa mengubah data tidaka akan memicu proses render ulang 
 untungnya dijavascript kita bisa menggunakan spread syntax untuk membantu meng-copy attribute di object 
+
+Nested Object
+kadang ada kasus kita menggunakan nested object 
+sama seperti sebelumnya kita disarankan untuk selalu membuat object  baru ketika mengubah state 
+kadang memang menyulitkan nested objectnya terlalu besar oleh karena itu disarankan tidak terlalu dalam membuat nested 
+
+Immer Liberary
+saat satu liberarysering digunakan ketika aplikasi menggunakan react adalah Immer
+immer adalah liberary yang digunakan untuk membuat immutable object dari object saat ini
+menggunaka immer akan lebih mudah dibandingkan menggunakan spread syntax terutama untuk object yang kompleks dan nested
+
+Use Immer Liberary
+liberary immer juga bisa diintegrasikan dengan react state dengan mudah 
+kita  bisa menggunakan liberary Use-immer
+kita cukup mengganti useState() menjadi useImmer()
+dan untuk mengupdate object di state kita bisa menggunakan function sebagai parameter di update methodnya
+
+Menambahkan Liberary Immer
+npm install immer use-immer
+
+Array di State
+sama seperti object array di state juga harus kita perlakukan sebagai immutable data
+artinya operasi menambah data mengubah data atau menghapus data di array kita harus buat array baru di update ke state 
+hal ini memang agak menyilitkan oleh karena itu dengan bantuan liberary seperti Immer hal ini jadi lebih mudah
+
+Mengubah Array 
+
+                hindari          gunakan
+menambahkan     push,unshit      contact,[..arr] spraed syntax
+menghapus      pop,shift,splice  filter,splice
+mengubah       splice,arr[i]     map
+mengurutkan    reverse,sort      buat array baru  
+
+Sharing State
+kadang kita ingin membuat state untuk beberapa component yang selalu berubah bersama-sama atau sederhananya adalah sharing(berbagi) state 
+untuk melakukan hal ini kita harus mengubah lokasi state dari component-component itu, ke parent component mereka,lalu kita kirim statenya melalui props 
+misalkan pada from task sebelumnya kita akna buat 2 child component, component untuk TaskFromnya dan component untuk Tasklistnya
+kita akan share statenya dari Task ke TaskFrom dan Tasklist melalui props
+
+Mepertahankan State 
+state terisolasi antar component react melacak state mana yang dimiliki oleh component berdasarkan di struktur UI
+kita bisa mengatur kapan kita ingin mempertahankan state kapan kita akan mereset state 
+state sendiri tidak disimpan didalam component state itu disimpan di react sedangkan ketika kita  menggunakan state di component maka sebenarnya kita akan menggunakan state yang ada di react 
+cara react bisa tahu di state mana yang digunakan oleh component adalah melihat posisi component di struktur UI 
+
+
+Posisi Component
+seperti yang dijelaskan sebelumnya,react menyimpam state sesuai dengan posisi Component
+ketika posisi component berubah misala hilang dari tampilan layar
+secara otomatis state akan dihapus dari react 
+misalkan kita akan membuat component counter bisa dihilangkan 
+ketika nanti component tersebut dihilangkan dari tampilan mana secar otomatis statenya juga akan hilang

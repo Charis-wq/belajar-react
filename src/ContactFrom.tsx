@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type { JSX } from "react/jsx-runtime";
+import { useImmer } from "use-immer";
 
 type Contact = {
         name: string;
@@ -9,17 +10,21 @@ type Contact = {
 export default function ContactFrom(): JSX.Element {
     
 
-    const [contact, setContact] = useState<Contact>({
+    const [contact, setContact] = useImmer<Contact>({
         name: "",
         message: ""
     });
 
     function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setContact({ ...contact, name: e.target.value });
+        setContact(draft => {
+            draft.name = e.target.value;
+        });
     };
 
     function handleMassageChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setContact({...contact, message: e.target.value})
+        setContact(draft => {
+            draft.message = e.target.value;
+        });
     }
     return(
        <div>
