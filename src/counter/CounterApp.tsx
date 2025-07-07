@@ -9,7 +9,8 @@ export default function CounterApp(): JSX.Element {
     }
     return (
         <div>
-            {show && <Counter2/>}
+            {show ? <Counter2 key={"Abdul"} name="Abdul"/> : <Counter2 key={"Charis"} name="Charis"/>}
+
             <input type="checkbox" onChange={handleChange} checked={show} />Tampilkan Counter 2
         </div>
 

@@ -329,4 +329,51 @@ seperti yang dijelaskan sebelumnya,react menyimpam state sesuai dengan posisi Co
 ketika posisi component berubah misala hilang dari tampilan layar
 secara otomatis state akan dihapus dari react 
 misalkan kita akan membuat component counter bisa dihilangkan 
-ketika nanti component tersebut dihilangkan dari tampilan mana secar otomatis statenya juga akan hilang
+ketika nanti component tersebut dihilangkan dari tampilan mana secar otomatis statenya juga akan hilang  
+
+Component Sama di Posisi Sama
+jika terdapat kasus menampilkan component yang sama
+tapi secara struuktur UI dia berada di posisi yang sama 
+maka state akan dipertahankan oleh react yang artinya tidak akan dihapus
+hal ini mungkin akan membingungkan tapi kita harus mengerti hal ini karena react akan menyimpan informasi state mengikuti posisi component jika rreact akan menyimpan informasi state mengikuti posisi component jika componentnya sama dan posisi sama maka state akan dipertahankan
+
+Kenapa State Masih Sama?
+hal ini terjadi secara struktur UI posisi component ada di posisi yang sama 
+jika posisi component dan jenis componentnya sama secara otomtis react akan mempertahankan state 
+kecuali posisinya berubah atau componentnya berbeda maka react akan menghapus statenya 
+
+Reset State 
+sekarang kita tahu bagaimana react mempertahankan data state 
+lantas bagaimana jika misal pada kondisi tertentu kita memang ingin melakukan reset state tidak mau mempertahankan statenya?
+ada beberapa cara untuk mereset statenya
+yang pertama dengan menghapus component dari tampilan UI
+ketika component hilang dai tampilan UI secara otomatis state akan ikut hilang
+
+Mengubah Dengan Component lain
+selain menghapus component kita juga bisa menghapus component dengan component diposisi yang sama 
+ketika posisi yang sama masih ada struktur UI tapi componentnya berbeda secara otomatis state juga akan direset
+misalkan sebelumnya kita  menampilakna component counter lalu kita ubah menjadi element paragraph secara otomatis state di component counter akan dihapus 
+
+Mengubah Posisi Component
+kaarena react akan menyimpan state sesuai dengan component dan posisinya 
+artinya jika posisi component diubah atau dipindahkan secara otomatis state juga akan direset
+
+Posisi Component Berbeda 
+selain mengubah posisi kita juga bisa jika component sama berada di posisi yang berbeda secara  otomatis statenya juga akan berbeda
+ini mungkin akan membingungkan karena secara DOM mungkin posisinya sama tapi secara di comonent berbeda
+
+Menggunakan Key
+cara yang umum biasanya digunakan untuk mereset state yaitu menambahkan key pada component 
+saat component yang sama ditampilkan diposisi yang sama jika key-nya berbeda maka akan dianggap component yang berbeda dengan demikian secara ototmatis state akan di reset 
+ini mungkin cara yang paling direkomndasikan dibanding harus mengubah-ubah posisi component
+
+Reducer
+Hooks State Reducer
+sebelumnya kita sudah bahas banyak tentang hooks state menggunakan useState()
+selain itu terdapat fitur hooks state lain yaitu Reducer
+menggunakan useReducer() 
+
+Reducer
+pada kasus kita membuat component yanga memiliki banyak proses update state kadang akan menyulitakan untuk memaintain-nya karana terlalu banyak event handler yang harus dibuat juga untuk mengubah data statenya 
+pada kasus seperti ini kita bisa mengkonsolidasi semua logic untuk update state di sebuah function di luar component atau kita sebut reducer 
+agara ada gambaran kita akana coba membuat component dengan state yang banya diupdate tanpa menggunakan reducer terlebih dahulu nantui kita akan ubah menjadi menggunakan reducer
