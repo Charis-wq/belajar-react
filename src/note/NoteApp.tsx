@@ -10,7 +10,7 @@ type FitureInitialNote = {
 };
 let id = 0;
 
-export const initialNotes: FitureInitialNote[] = [
+ const initialNotes: FitureInitialNote[] = [
     {id: id++, text: "leran HTML", done: false},
     {id: id++, text: "leran CSS", done: true},
     {id: id++, text: "leran Javascript", done: false},
@@ -42,7 +42,7 @@ export default function NoteApp() {
     function handleDeleteNote(note: any) {
         setNotes((draft) => {
             const index = draft.findIndex(item => item.id === note.id)
-            draft.slice(index, 1);
+            draft.splice(index, 1);
         })
     }
 

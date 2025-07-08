@@ -4,6 +4,7 @@ import Note from "../note/Note"
 type NoteType = {
     id: string | number;
     text: string;
+    done: boolean;
     // add other fields as needed
 };
 
@@ -19,8 +20,9 @@ export default function NoteList({notes, onChange, onDelete}: NoteListProps): JS
             {notes.map(note => (
                 <li key={note.id}>
                     <Note
+
                         note={note}
-                        onChange={(text: string) => onChange({ ...note, text })}
+                        onChange={onChange}
                         onDelete={() => onDelete(note.id)}
                     />
 

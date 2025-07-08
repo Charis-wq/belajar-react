@@ -1,7 +1,7 @@
 import  { useState, type JSX } from "react";
 type FitureNote = {
     note: any;
-    onChange: (value: string) => void;
+    onChange: (value: {id: number; text: string; done: boolean;} ) => void;
     onDelete: () => void;
 }
 
