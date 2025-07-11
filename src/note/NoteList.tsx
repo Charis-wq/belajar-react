@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import Note from "../note/Note"
 
 type NoteType = {
-    id: string | number;
+    id:  number;
     text: string;
     done: boolean;
     // add other fields as needed
@@ -11,7 +11,7 @@ type NoteType = {
 type NoteListProps = {
     notes: NoteType[];
     onChange: (note: NoteType) => void;
-    onDelete: (id: string | number) => void;
+    onDelete: (id: number) => void;
 };
 
 export default function NoteList({notes, onChange, onDelete}: NoteListProps): JSX.Element {

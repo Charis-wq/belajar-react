@@ -1,6 +1,6 @@
 import  { useState, type JSX } from "react";
 type FitureNote = {
-    note: any;
+    note: any
     onChange: (value: {id: number; text: string; done: boolean;} ) => void;
     onDelete: () => void;
 }
@@ -43,7 +43,7 @@ export default function Note({ note, onChange, onDelete }: FitureNote): JSX.Elem
 
     return(
         <label>
-            <input type="checkbox" checked={note.done} onChange={handleChangeDone}  />
+            <input type="checkbox" checked={note.done} onChange={handleChangeDone}/>
             {component}
             <button onClick={onDelete}>Delete</button>
 

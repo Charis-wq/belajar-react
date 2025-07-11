@@ -377,3 +377,18 @@ Reducer
 pada kasus kita membuat component yanga memiliki banyak proses update state kadang akan menyulitakan untuk memaintain-nya karana terlalu banyak event handler yang harus dibuat juga untuk mengubah data statenya 
 pada kasus seperti ini kita bisa mengkonsolidasi semua logic untuk update state di sebuah function di luar component atau kita sebut reducer 
 agara ada gambaran kita akana coba membuat component dengan state yang banya diupdate tanpa menggunakan reducer terlebih dahulu nantui kita akan ubah menjadi menggunakan reducer
+
+Menggunakan Reducer
+sekarangbkita akan fokus ke NoteApp.tsx 
+kita bisa lihat bahwa terdapat 3 aksi untuk update note ada add upsate dan delete dan itu semua disimpan didalam function yang berbeda-beda dari eventhandler yang berbeda-beda
+menggunakan reducer agak sedikit berbeda dengan menambahkan state secara langsung alih-alih memberi tahu ke react apa yang harus dilakukan dengan mengubah state menggunakan reducer kita memberitahu react apa yang sudah dilakukan pengguna(action)
+implementasi logic dari actionnya dilakukan ditempat yang terpisah
+
+Membuat Reducer Function
+reducer function adalahh kode dimana kita menyimpan logic kita
+reducer function memiliki 2 parameter, state saat ini dan action object
+return functionnya adalah state selanjutnya
+
+Menggunakan Immer
+liberary useImmer juga mendukung reducer sehingga kita bisa lebih mudah karena kita bisa mengedit data draft dibanding membuat data baru dari state yang ada
+kita bisa menggunakan method useImmerReducer()
