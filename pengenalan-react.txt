@@ -392,3 +392,60 @@ return functionnya adalah state selanjutnya
 Menggunakan Immer
 liberary useImmer juga mendukung reducer sehingga kita bisa lebih mudah karena kita bisa mengedit data draft dibanding membuat data baru dari state yang ada
 kita bisa menggunakan method useImmerReducer()
+
+CONTEXT
+Context Hooks 
+selain state hooks yang sudah kita bahas sebelumnya menggunakan useState() dan useReducer()
+masih ada Hoos yang lainnya salah satunya adalah Context Hooks menggunakan useContext() 
+
+Context
+biasanya untuk mengirim inforamasi dari arent component ke child component menggunakan props 
+tapi mengirim informasi melalui banyak component mungkin akan membuat kita erlalu sulit melakukan banyak component mungkin akan membuat kita terlalu sulit melakukan maintaince propsnya
+atau misalkan saja kita punya satu informasi yang digunakan oleh banyak component maka mengirim kesemua component juga akan terlalu sulit 
+context memperbolehkan parents component membuat informasi dana bisa digunakan oleh component manapun dibawahnya, tidaka peduli seberapa dalam component dibawahnya
+banyak juga yang bilang jika context adalah global state
+
+Membuat Context
+untuk membuat context kita bisa menggunakan function createContext()
+selanjutnya setelah membuat context untuk menggunakan context tersebut kita bisa menggunakan useContext()
+untuk mengubah data di context kita gunakan provider yang terdapat di context secara otomatis semua component dibawahnya akan mendapat nilai sesuai yang kita ubah di context provider
+
+Context dan State
+untuk mengubah context kkita harus menggunakan provider
+hal ini karena context itu hanya bisa di akses oleh component di bawahnya tidak bisa component di atasnya atau yang sejajar
+selain itu component dibawahnya hanya bisa membaca data dari context tidak bisa mengubah data di context
+oleh karena itu jika kita ingin membuat data di context bisa diubah dengan mudah kita bisa menggunakan bantuan state
+
+Sebelum menggunakan Context 
+context mungkin lebih mudah digunakan dibanding mengirim semua data state via props 
+tapi jangan sering menggunakan context sampai ke hal yang ssederhana 
+gunakan context jika memang perlu jika masih sederhana bisa menggunakan state dan props dulu jika sudah terlalu kompleks dan terlalu dalam mengirim props-nya baru diubah ke context 
+
+Context dan reducer 
+sebelumnya kita sudah bahas tentang reducer sma seperti state reducer juga bisa kita intregrasikan dengan context 
+pada kasus ketika kita membuat component yang sudah kompleks dan menggunakan reducer kita bisa mengirim semua state dan reducer menggunakan context ke child component 
+sehingga lebih mudah di bandingkan menggunakan props 
+misalkan kita coba modifikasi halama Notes yang sudah kita buat 
+
+Pindahkan Event Handler 
+karena method dispatche ada di context jadi kita tidak perlu mengirim event handler lagi dari parent component ke child component melalui props 
+kita bisa langsung pindahkan ke child component karena child component bisa mengakses dispatch function 
+
+REF 
+Ref Hooks
+fitur hooks lain selain state dan context adalah ref hooks
+ketika kita ingin component mengingat informasi tapi tidak mau memicu render ulang maka kita bisa menggunakan ref
+menggunakan ref hooks bisa menggunakan method useRef()
+function useRef() akan mengembalikan object yang memiliki attribute current dimana attribute berisi value yang di pegang oleh ref
+
+Perbedana Ref dan State
+Ref:
+-userRef(initial) mengembalikan object(current:initial)
+-tidak memicu render ulang ketika diubah
+-mutable, isa dimodifikasi dan diubah current valuenya
+-tidak direkomendasikan membaca atau menulis current value ketika proses rendering lebih cocock dibaca atau diubah pada event handler
+State
+-useState(initial) mengembalikan [value,setValue]
+-memicu render ulang ketika diubah
+-immutable,kita hanya bisa mengubah menggunakan function setValue
+-bisa dibaca kapanpun tapi tiap render akan memiliki snapshot masing-masing

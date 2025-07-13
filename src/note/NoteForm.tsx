@@ -1,19 +1,21 @@
-import { useState, type JSX } from "react";
+import { useContext, useState, type JSX } from "react";
+import { NotesDispatcheContext } from "./NoteContext";
 
-type NoteFormProps = {
-    onAddNote: (note: string) => void;
-};
 
-export default function NoteForm({ onAddNote }: NoteFormProps): JSX.Element {
+export default function NoteForm(): JSX.Element {
     const [text, setText] = useState("");
+    const dispatch = useContext(NotesDispatcheContext);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
         setText(e.target.value);
     }
 
     function handleClick(): void {
-        onAddNote(text);
         setText("");
+        dispatch({
+            type: "ADD_NOTE",
+            text: text
+        })
     }
 
     return (
