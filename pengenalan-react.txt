@@ -449,3 +449,10 @@ State
 -memicu render ulang ketika diubah
 -immutable,kita hanya bisa mengubah menggunakan function setValue
 -bisa dibaca kapanpun tapi tiap render akan memiliki snapshot masing-masing
+
+Manipulasi DOM dengan Ref
+react secara otomatis akan mengupdate DOM ketika melakukan render ulang, jika kita tidak perlu memanipulasi DOM secara manual lagi
+tapi kadang kita perlu mengakses DOM secara manual contoh memindahkan fokus kesalah satu element atau scroll ke salah satu element tertentu dan lain-lain
+sayangnya tidak ada cara untuk melakukan hal ini menggunakan react, jadi kita erlu tangani ini secara manual
+salah satu caranya  kita menggunakan ref menuju keDOM element 
+caranya pada elementnya kita bisa menambahakan attribute ref
