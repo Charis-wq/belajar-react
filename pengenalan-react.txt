@@ -456,3 +456,50 @@ tapi kadang kita perlu mengakses DOM secara manual contoh memindahkan fokus kesa
 sayangnya tidak ada cara untuk melakukan hal ini menggunakan react, jadi kita erlu tangani ini secara manual
 salah satu caranya  kita menggunakan ref menuju keDOM element 
 caranya pada elementnya kita bisa menambahakan attribute ref
+
+Ref untuk Componenet
+ref hanya bisa digunakan di DOM element kkita tidak bisa menggunakan ref di component
+jika kita menambahkan ref ke component maka attribute current akan bernila null
+kita akan mencoba praktekan ini dengan membuat guest book input component
+
+Mengakses Component DOM Element 
+karena component tidak bisa dijadikan sebagai ref oleh karena itu jika kita ingin menggunakan ref untuk component kita bisa menggunakan props 
+kita bisa membuat props ref yang kita isi ref
+props ref bisa kita gunakan pada DOM element di dalam component  tersebut
+
+EFFECT 
+Effect Hooks
+hooks selanjutnya yang akana kita bahas adalah effect hooks 
+beberapa component mungkin butuh untuk berkomunikasi dengan external system misalkan berkomunikasi dengan  non-react component berkomunikasi dengan server dan lain-lain
+effect hooks memungkinkan kita membuat  kode yang dijalankan setelah proses render sehingga kita bisa berkomunikasi dengan system diluar react 
+effect terjadi setelah render selesai kita bisa menggunakan useEffectt() untuk membuat effect  
+
+Kenapa Tidak Cukup Event Handler 
+biasanya kita tahu bahwa component itu harus pure dan tidak memiliki efek samping
+untuk kode yang memiliki efek samping biasanya kita akan menggunkan event handler 
+namun terkadang ada kebutuhan kita memang perlu membuat component yang memilki efek samping ketika dirender
+misalkan ketika component di render kita ingin mengambil data dari server sehingga bisa menyebabkan isi component berubah (efek samping) sesuai dengan respon server
+disinilah effect hooks diperlukan
+
+Infinite Loop 
+secara default effect akan dieksekusi setelah proses render 
+oleh karena itu kita perlu hati-hati karena jika didalam effect kita mengubah state maka bisa terjasi infinite loop yang menyebabkan proses render ulang terus menerus terjadi tanpa henti
+
+Effect Clean Up 
+pada beberapa kasus mungkin kita butuh melakukan sesuatu setelah eksekusi effect selesai dilakukan 
+seperti misalkan di try catch terdapat finally
+dieffect terdapat proses yang namanya clean up, clean up akan doiproses stetelah proses effect selesai 
+caranya cukup mudah kita tinggal return kan clouser function didalam effect 
+clean up akan dieksekusi sebelum effect selanjutnya di ekseskusi atau component di hilangkan
+
+Effect Dependencies 
+secara default effect akan dieksekusi setiap selesai proses render 
+artinya jika proses render dilakukan berkali-kali effect akan dieksekusi juga berkali-kali setelah proses render selesai
+hal ini menjadikan kita harus melakukan pengecekan secara manual seperti dimateri sebelumnya jika tidak ingin kode effect dijalankan berkali-kali 
+useEffect() memiliki parameter kedua yaitu Dependencies
+kita bisa mengisi dependencies dengan array dari state dimana artinya effect hanya akan dieksekusi jika state tersebut berubah, juika itidak berubah maka effect tidak akan dieksekusi
+hal ini mungkin lebih mudah dibanding manual melakukan if else 
+
+Empty Dependencies
+terkadang mungkin kita hanya ingin memanggil effect sekali saja setelah pertama kali component  di render setelah itu kita tidak mau memanggil effect lagi bahkan jika terjadi render ulang
+pada kasus seperti ini kita bisa menggunakan empty array sebagai dpendencies maka effect hanya akan di panggil sekali saja setelah render pertama kali selanjutnya tidak akan dipanggil lagi

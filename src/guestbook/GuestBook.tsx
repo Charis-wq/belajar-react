@@ -1,4 +1,5 @@
-import React, { useRef, useState, type JSX } from "react";
+import  { useRef, useState, type JSX } from "react";
+import GuestBookForm from "./GuestBookForm";
 
 export default function GuestBook(): JSX.Element{
     const [name, setName] = useState<string>("");
@@ -20,11 +21,10 @@ export default function GuestBook(): JSX.Element{
         <>
         <h1>Guest Book</h1>
         <form action="">
-            <label htmlFor="name">Name</label><br />
-            <input ref={nameInput} type="text" name= "name" value={name} onChange={(e => setName(e.target.value))}/> <br />
+            <GuestBookForm ref={nameInput} name={name} setName={setName}/> <br />
             <label htmlFor="message" >Message</label><br />
             <textarea name="message" value={message} onChange={(e => setMessage(e.target.value))} ></textarea><br />
-            <button type="submite" onClick={handleSubmite}>Submite</button>
+            <button  onClick={handleSubmite}>Submite</button>
         </form>
         </>
     )
