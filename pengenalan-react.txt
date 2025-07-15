@@ -503,3 +503,42 @@ hal ini mungkin lebih mudah dibanding manual melakukan if else
 Empty Dependencies
 terkadang mungkin kita hanya ingin memanggil effect sekali saja setelah pertama kali component  di render setelah itu kita tidak mau memanggil effect lagi bahkan jika terjadi render ulang
 pada kasus seperti ini kita bisa menggunakan empty array sebagai dpendencies maka effect hanya akan di panggil sekali saja setelah render pertama kali selanjutnya tidak akan dipanggil lagi
+
+Async Code di Effect
+terkadang saat berhubungan dengan system external misalkan dengan API biasanya kita akan membuat kode asyn await 
+sayangnya effect tidak mendukung async function oleh karena itu ika kita bisa menggunakan promises secara langsung kita bisa langsung saja gunakan promise tanpa menggunakan asyn await 
+namun jika kita memmang mau menggunkan asyn await maka kita harus buat function yang nanti dipanggil di useEffect()
+misalkan kita akan mencoba ubah kode sebelumnya menjadi asyn await ketika mengambil data products
+
+Jangan Gunakan Effect 
+effect hook adalah cara di luar dari yang biasa dilakukan di react
+effect memungkinkan kita keluar dari kebiasaan di react dan memungkinkan component kita berinteraksi denganexternal system seperti non react component network dana lain-lain 
+jika tidak ada interakssi dengan eksternal system maka sebaiknya jangan gunakan effect 
+meminimalisir penggunan effect akan membuat kode kita mudah untuk dibaca cepat dieksekusi dan minim error
+
+Jangan Gunakan Effect untuk Inisialisai Aplikasi 
+terkadang beberapa proses dilakukan di awal sebelum halaman di tampilkan 
+pada kasus ini gunakan saja kode javascript langsung diluar react
+jangan gunakan effect untuk melakukan inisialisasi  aplikasi 
+hal ini karena effect akan dieksekui setelah render(setelah ditampolkan) dan akan di eksekusi ulang jika terjadi render ulang (bisa berkali-kali)
+
+Jangan Gunakan Effect untuk Mengubah Data di Server 
+jika terdapat logic di effect melakukan perubahann dat di server perlu hati-hati karena bisa saj effect dieksekusi berkali-kali karena proses render ulang 
+oleh karena itu tidak direkomndasikan untuk menggunkan effect untuk mengubah data di server 
+gunakan event handler jika ingin mengubah data di server sehingga jelas kapan perubahannya terjadi 
+menggunakan effect bisa menyebabkan perubahan data di server terjadi berkali-kali karena render ulang component
+
+Memo/Memoization 
+memoization adalah teknik optimasi untuk mempercepat program komputer dengan cara menyimpan data secara sementara dari hasil kalkulasi(yang biasanya berat) sehingga tidak perlu dilakukan ulang
+ini adalah bagian dari performance hook dimana kita bisa menggunakan function useMemo(callback, [dependencies]) 
+ini cocok untuk kasus misalkan kita perlu memanggil kode yang berat dan hasilnya selalu sama dibandingkan kita memanggil terus-terusan setiap proses render lebih baik kita lakukan sekali saja dana proses pemanggilan berikutnya kita cukup kembalikan hasil yang pertama
+
+Contoh penggunan Memo
+misalkan pada aplikasi Notes, kita ingin tambahkan proses untuk mencari note 
+jika misalkan pengguna melakukan pencarin dengan value yang sama dibanding kita lakukan pencarian ulang kita bisa kembalikan hasil yang sama saja seperti sebelumnya
+
+Custom Hooks 
+react default sudah memiliki banyak hooks untuk kita gunakan untuk mempermudah membuat aplikasi menggunakan react 
+namun kit juga bisa membuat hooks secara manual jika kita mau 
+membuat hooks biasanya menggunakan function dengan awalan "use" 
+contoh: kita akan membuat hooks untuk mendeteksi apakah sedang online atau offline 

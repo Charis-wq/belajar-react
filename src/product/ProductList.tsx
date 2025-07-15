@@ -1,8 +1,14 @@
 import { useEffect,  useState } from "react";
 import Product from "./Product";
 
+type ProductType = {
+    id: number;
+    name: string;
+    price: number;
+};
+
 export default function ProductList(){
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<ProductType[]>([]);
     const [load, setLoad] = useState(false);
 
     function handleClick(){
@@ -14,11 +20,15 @@ export default function ProductList(){
     }, []);
 
     useEffect(() => {
+
+        async function fetchProduct(){
+            const res = await fetch("/Products.json");
+            const data = await res.json();
+            setProducts(data);
+        }
         if(load){
-            console.log("use Effect")
-            fetch("./public/products.json")
-            .then((res) => res.json())
-            .then((data) => setProducts(data))
+            fetchProduct();
+           
             
         }
 
