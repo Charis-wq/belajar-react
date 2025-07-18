@@ -1,15 +1,17 @@
-import { useContext, useState, type JSX } from "react";
+import { useContext, useState } from "react";
 import { NotesDispatcheContext } from "./NoteContext";
 
-type FitureNote = {
+
+  type FitureNote = {
     note: {
         id: number;
         text: string;
         done: boolean;
     };   
+    
 };
 
-export default function Note({ note }: FitureNote): JSX.Element {
+export default function Note({note}: FitureNote) {
     const [isEditing, setIsEditing] = useState(false);
     const dispatch = useContext(NotesDispatcheContext);
 

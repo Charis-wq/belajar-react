@@ -5,13 +5,14 @@ import { NotesContext } from "./NoteContext";
 type NoteType = {
   id: number;
   text: string;
-  // tambahkan field lain kalau ada
+  done: boolean;
+  
 };
 
 
 
 export default function NoteList(): JSX.Element {
-    const notes = useContext(NotesContext) as NoteType[];
+    const notes = useContext<NoteType[]>(NotesContext) 
     const [search, setSearch] = useState("");
     const searchInput = useRef<HTMLInputElement>(null);
 
